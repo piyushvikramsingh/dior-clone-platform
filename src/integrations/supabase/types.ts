@@ -14,7 +14,117 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          items: Json
+          shipping_address: Json | null
+          status: string
+          total: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          items?: Json
+          shipping_address?: Json | null
+          status?: string
+          total?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          items?: Json
+          shipping_address?: Json | null
+          status?: string
+          total?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category: string
+          colors: string[] | null
+          compare_at_price: number | null
+          created_at: string
+          description: string
+          featured: boolean
+          id: string
+          images: string[]
+          in_stock: boolean
+          name: string
+          price: number
+          sizes: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          colors?: string[] | null
+          compare_at_price?: number | null
+          created_at?: string
+          description?: string
+          featured?: boolean
+          id?: string
+          images?: string[]
+          in_stock?: boolean
+          name: string
+          price?: number
+          sizes?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          colors?: string[] | null
+          compare_at_price?: number | null
+          created_at?: string
+          description?: string
+          featured?: boolean
+          id?: string
+          images?: string[]
+          in_stock?: boolean
+          name?: string
+          price?: number
+          sizes?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
