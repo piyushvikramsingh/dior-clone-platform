@@ -63,7 +63,7 @@ const Header = () => {
             <Link to="/search" className="p-2 hover:opacity-70 transition-opacity">
               <Search size={18} />
             </Link>
-            <Link to="/account" className="p-2 hover:opacity-70 transition-opacity hidden md:block">
+            <Link to={user ? "/account" : "/login"} className="p-2 hover:opacity-70 transition-opacity hidden md:block">
               <User size={18} />
             </Link>
             <button
