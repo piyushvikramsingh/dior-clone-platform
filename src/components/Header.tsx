@@ -97,7 +97,7 @@ const Header = () => {
               </Link>
             ))}
             <Link
-              to="/account"
+              to={user ? "/account" : "/login"}
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-body tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors py-2"
             >
