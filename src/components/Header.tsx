@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ShoppingBag, User, Menu, X } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
+import { useAuth } from '@/hooks/useAuth';
 
 const Header = () => {
+  const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { totalItems, openCart } = useCartStore();
   const count = totalItems();
@@ -61,7 +63,7 @@ const Header = () => {
             <Link to="/search" className="p-2 hover:opacity-70 transition-opacity">
               <Search size={18} />
             </Link>
-            <Link to="/account" className="p-2 hover:opacity-70 transition-opacity hidden md:block">
+            <Link to={user ? "/account" : "/login"} className="p-2 hover:opacity-70 transition-opacity hidden md:block">
               <User size={18} />
             </Link>
             <button
@@ -95,7 +97,7 @@ const Header = () => {
               </Link>
             ))}
             <Link
-              to="/account"
+              to={user ? "/account" : "/login"}
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-body tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors py-2"
             >
