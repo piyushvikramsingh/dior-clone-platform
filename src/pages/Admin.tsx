@@ -156,7 +156,7 @@ const Admin = () => {
             <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft size={18} />
             </Link>
-            <h1 className="font-display text-xl tracking-[0.1em] uppercase">MAISON Admin</h1>
+            <h1 className="font-display text-xl tracking-[0.1em] uppercase">OSSICA Admin</h1>
           </div>
           <Link to="/account" className="text-xs font-body text-muted-foreground hover:text-foreground">
             Account

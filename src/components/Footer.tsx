@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <h2 className="font-display text-2xl tracking-[0.15em] uppercase mb-4">MAISON</h2>
+            <h2 className="font-display text-2xl tracking-[0.15em] uppercase mb-4">OSSICA</h2>
             <p className="text-sm font-body text-primary-foreground/70 leading-relaxed">
               Where timeless elegance meets modern sophistication. Each piece tells a story of craftsmanship and refined taste.
             </p>
@@ -68,7 +68,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs font-body text-primary-foreground/50">
-            © 2026 MAISON. All rights reserved.
+            © 2026 OSSICA. All rights reserved.
           </p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
