@@ -1,9 +1,10 @@
+import { forwardRef } from 'react';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { Link } from 'react-router-dom';
 
-const CartDrawer = () => {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, totalPrice, clearCart } = useCartStore();
+const CartDrawer = forwardRef<HTMLDivElement>((_, ref) => {
+  const { items, isOpen, closeCart, removeItem, updateQuantity, totalPrice } = useCartStore();
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price);
@@ -11,7 +12,7 @@ const CartDrawer = () => {
   if (!isOpen) return null;
 
   return (
-    <>
+    <div ref={ref}>
       {/* Overlay */}
       <div
         className="fixed inset-0 bg-foreground/40 z-50 backdrop-blur-sm"
@@ -114,8 +115,9 @@ const CartDrawer = () => {
           </>
         )}
       </div>
-    </>
+    </div>
   );
-};
+});
+CartDrawer.displayName = 'CartDrawer';
 
 export default CartDrawer;
