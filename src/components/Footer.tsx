@@ -85,7 +85,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-});
-Footer.displayName = 'Footer';
+};
 
 export default Footer;
