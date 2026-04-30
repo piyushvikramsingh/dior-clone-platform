@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
-import { LogOut, Package, Settings, Shield } from 'lucide-react';
+import { LogOut, Package, Shield, Link2, Unlink } from 'lucide-react';
+import type { UserIdentity } from '@supabase/supabase-js';
 
 const Account = () => {
   const { user, loading, isAdmin, signOut } = useAuth();
