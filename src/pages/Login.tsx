@@ -44,7 +44,7 @@ const Login = () => {
       <main className="container mx-auto px-4 md:px-8 py-16 md:py-24 max-w-md">
         <h1 className="font-display text-3xl md:text-4xl text-center mb-2">Sign In</h1>
         <p className="text-center text-sm font-body text-muted-foreground mb-10">
-          Welcome back to MAISON
+          Welcome back to OSSICA
         </p>
 
         <button

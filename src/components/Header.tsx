@@ -41,7 +41,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
             <h1 className="font-display text-2xl md:text-3xl font-semibold tracking-[0.15em] uppercase text-foreground">
-              MAISON
+              OSSICA
             </h1>
           </Link>
 
