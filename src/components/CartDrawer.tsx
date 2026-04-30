@@ -114,9 +114,8 @@ const CartDrawer = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   );
-});
-CartDrawer.displayName = 'CartDrawer';
+};
 
 export default CartDrawer;
