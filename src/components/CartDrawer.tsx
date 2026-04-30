@@ -1,9 +1,8 @@
-import { forwardRef } from 'react';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { Link } from 'react-router-dom';
 
-const CartDrawer = forwardRef<HTMLDivElement>((_, ref) => {
+const CartDrawer = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalPrice } = useCartStore();
 
   const formatPrice = (price: number) =>
@@ -12,7 +11,7 @@ const CartDrawer = forwardRef<HTMLDivElement>((_, ref) => {
   if (!isOpen) return null;
 
   return (
-    <div ref={ref}>
+    <>
       {/* Overlay */}
       <div
         className="fixed inset-0 bg-foreground/40 z-50 backdrop-blur-sm"
