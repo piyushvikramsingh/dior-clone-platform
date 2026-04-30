@@ -13,10 +13,56 @@ import type { UserIdentity } from '@supabase/supabase-js';
 const Account = () => {
   const { user, loading, isAdmin, signOut } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [identities, setIdentities] = useState<UserIdentity[]>([]);
+  const [linking, setLinking] = useState(false);
 
   useEffect(() => {
     if (!loading && !user) navigate('/login');
   }, [loading, user, navigate]);
+
+  const refreshIdentities = useCallback(async () => {
+    const { data } = await supabase.auth.getUserIdentities();
+    setIdentities(data?.identities ?? []);
+  }, []);
+
+  useEffect(() => {
+    if (user) refreshIdentities();
+  }, [user, refreshIdentities]);
+
+  const googleIdentity = identities.find((i) => i.provider === 'google');
+  const emailIdentity = identities.find((i) => i.provider === 'email');
+
+  const handleLinkGoogle = async () => {
+    setLinking(true);
+    const { error } = await supabase.auth.linkIdentity({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/account` },
+    });
+    setLinking(false);
+    if (error) {
+      toast({ title: 'Could not link Google', description: error.message, variant: 'destructive' });
+    }
+  };
+
+  const handleUnlinkGoogle = async () => {
+    if (!googleIdentity) return;
+    if (identities.length < 2) {
+      toast({
+        title: 'Cannot unlink',
+        description: 'You must have at least one sign-in method.',
+        variant: 'destructive',
+      });
+      return;
+    }
+    const { error } = await supabase.auth.unlinkIdentity(googleIdentity);
+    if (error) {
+      toast({ title: 'Could not unlink', description: error.message, variant: 'destructive' });
+    } else {
+      toast({ title: 'Google disconnected' });
+      refreshIdentities();
+    }
+  };
 
   const { data: profile } = useQuery({
     queryKey: ['profile', user?.id],
