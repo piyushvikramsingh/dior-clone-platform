@@ -115,8 +115,9 @@ const CartDrawer = forwardRef<HTMLDivElement>((_, ref) => {
           </>
         )}
       </div>
-    </>
+    </div>
   );
-};
+});
+CartDrawer.displayName = 'CartDrawer';
 
 export default CartDrawer;
